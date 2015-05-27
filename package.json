@@ -31,7 +31,7 @@
     "karma-osx-reporter": "^0.2.0",
     "karma-phantomjs-launcher": "^0.1.4",
     "mocha": "^2.2.5",
-    "phantomjs": "^2.0.0-alpha"
+    "phantomjs": "^1.9.17"
   },
   "dependencies": {
     "dom4": "^1.4.5",
