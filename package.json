@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/karma start"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,25 @@
   "bugs": {
     "url": "https://github.com/britco/maximus/issues"
   },
-  "homepage": "https://github.com/britco/maximus"
+  "homepage": "https://github.com/britco/maximus",
+  "devDependencies": {
+    "brfs": "^1.4.0",
+    "chai": "^2.3.0",
+    "coffee-script": "^1.9.3",
+    "coffeeify": "^1.1.0",
+    "karma": "^0.12.33",
+    "karma-browserify": "^4.2.1",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-cli": "0.0.4",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "karma-mocha": "^0.1.10",
+    "karma-osx-reporter": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^2.2.5",
+    "phantomjs": "^1.9.17"
+  },
+  "dependencies": {
+    "verge": "^1.9.1"
+  }
 }
