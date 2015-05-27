@@ -13,7 +13,6 @@ I.E.
 </div>
 ````
 
-
 ## How to use
 
 Either specify a selector or a `DOMElement`.
