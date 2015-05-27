@@ -15,7 +15,12 @@
   "bugs": {
     "url": "https://github.com/britco/maximus/issues"
   },
-  "homepage": "https://github.com/britco/maximus",
+  "homepage": "https://github.com/britco/maximus",  
+  "browserify": {
+    "transform": [
+      "coffeeify"
+    ]
+  },
   "devDependencies": {
     "brfs": "^1.4.0",
     "chai": "^2.3.0",
@@ -32,6 +37,9 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "mocha": "^2.2.5",
     "phantomjs": "^1.9.17"
+  },
+  "peerDependencies": {
+    "coffeeify": ">=1.0.0"
   },
   "dependencies": {
     "raf": "^3.0.0",
