@@ -1,4 +1,6 @@
 chai = require 'chai'
+raf = require 'raf'
+fs = require 'fs'
 maximus = require '../index.coffee'
 documentHelpers = require './helpers/document'
 
@@ -11,40 +13,38 @@ describe 'simple', ->
     maximus.reset()
     
   it 'should fit element to browser on load', (done) ->
-    fs = require 'fs'
-  
     fs.readFile "#{__dirname}/fixtures/simple_01.html", (err, result) ->
       div = document.createElement('div')
       div.innerHTML = result.toString()
       document.querySelector('body').appendChild(div.firstChild)
       
-      adUnit = document.querySelector('#ad-unit')
+      element = document.querySelector('body div:last-of-type')
+      maximus(element)
       
-      maximus(adUnit)
-      
-      adUnit.getBoundingClientRect().left.should.equal(0)
-      adUnit.offsetWidth.should.equal(document.documentElement.clientWidth)
+      element.getBoundingClientRect().left.should.equal(0)
+      element.offsetWidth.should.equal(document.documentElement.clientWidth)
     
       done()
   
-  # it 'should fit element on resize', ->
-  #   fs = require 'fs'
-  # 
-  #   fs.readFile "#{__dirname}/fixtures/simple_01.html", (err, result) ->
-  #     div = document.createElement('div')
-  #     div.innerHTML = result.toString()
-  #     document.querySelector('body').appendChild(div.firstChild)
-  #     
-  #     adUnit = document.querySelector('#ad-unit')
-  #     
-  #     maximus(adUnit)
-  #     
-  #     document.querySelector('div:first-of-type').style.marginLeft = '20px'
-  #     document.querySelector('div:first-of-type').style.marginRight = '10px'
-  #     
-  #     window.dispatchEvent(new Event('resize'))
-  #     
-  #     setTimeout ->
-  #       adUnit.getBoundingClientRect().left.should.equal(0)
-  #       adUnit.offsetWidth.should.equal(document.documentElement.clientWidth)
-  #     , 65    
+  it 'should fit element on resize', (done) ->
+    fs.readFile "#{__dirname}/fixtures/simple_01.html", (err, result) ->
+      div = document.createElement('div')
+      div.innerHTML = result.toString()
+      document.querySelector('body').appendChild(div.firstChild)
+      
+      element = document.querySelector('body div:last-of-type')
+      
+      maximus(element)
+      
+      element.parentNode.style.marginLeft = '20px'
+      element.parentNode.parentNode.style.marginLeft = '20px'
+      element.parentNode.parentNode.style.marginRight = '20px'
+    
+      event = document.createEvent('Event')
+      event.initEvent('resize', false, false)
+      top.window.dispatchEvent(event)
+    
+      raf ->
+        element.getBoundingClientRect().left.should.equal(0)
+        element.offsetWidth.should.equal(document.documentElement.clientWidth)
+        done()

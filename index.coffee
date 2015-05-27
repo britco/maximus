@@ -1,4 +1,5 @@
 verge = require 'verge'
+raf = require 'raf'
 
 Max =
   trackedElements: []
@@ -19,9 +20,8 @@ Max =
       @maximize(element)
     
   onResize: ->
-    console.log 'on resize!'
     if not Max._tickingResize
-      requestAnimationFrame =>
+      raf ->
         Max._tickingResize = false
         Max._onResize()
         
@@ -56,6 +56,6 @@ Max =
     
     top.window.removeEventListener 'resize', Max.onResize if Max.hasResizeHandler
     
-Max.track.reset = Max.reset
+[Max.track.reset, Max.track.onResize] = [Max.reset, Max.onResize]
 
 module.exports = Max.track
