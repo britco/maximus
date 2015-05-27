@@ -34,7 +34,6 @@
     "phantomjs": "^1.9.17"
   },
   "dependencies": {
-    "dom4": "^1.4.5",
     "raf": "^3.0.0",
     "verge": "^1.9.1"
   }
