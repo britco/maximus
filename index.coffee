@@ -45,9 +45,17 @@ Max =
     # Adjust the left and right margin so box is stretched to the whole screen
     rect = verge.rectangle(placeholder)
     
-    element.style.marginLeft = rect.left * -1 + 'px'
+    if rect.left is 0
+      # If it's already flushed the left then we don't have to do anything!
+      element.style.marginLeft = 0
+    else
+      element.style.marginLeft = rect.left * -1 + 'px'
     
-    element.style.marginRight = (verge.viewportW() - placeholder.offsetWidth - rect.left) * -1 + 'px'
+    if verge.viewportW() is placeholder.offsetWidth - rect.left
+      # If it's already flushed the right,
+      element.style.marginRight = 0
+    else
+      element.style.marginRight = (verge.viewportW() - placeholder.offsetWidth - rect.left) * -1 + 'px'
     
   reset: (element) ->
     # Reset to original state
