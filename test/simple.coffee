@@ -2,9 +2,6 @@ chai = require 'chai'
 raf = require 'raf'
 fs = require 'fs'
 maximus = require '../index.coffee'
-documentHelpers = require './helpers/document'
-
-FIXTURES_DIR = "#{__dirname}/fixtures"
 
 chai.should()
 
