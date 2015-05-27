@@ -45,10 +45,6 @@ Max =
     
     element.style.marginRight = (verge.viewportW() - placeholder.offsetWidth - rect.left) * -1 + 'px'
     
-    # element.style.marginLeft = placeholder.offsetLeft * -1 + 'px'
-    # element.style.width = top.document.documentElement.clientWidth + 'px'
-    # 
-    
   reset: (element) ->
     # Reset to original state
     Max.trackedElements = []
