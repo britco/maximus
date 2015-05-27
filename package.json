@@ -1,8 +1,8 @@
 {
   "name": "maximus",
-  "version": "0.0.2",
+  "version": "0.0.21",
   "description": "",
-  "main": "index.js",
+  "main": "index.coffee",
   "scripts": {
     "test": "./node_modules/.bin/karma start"
   },
