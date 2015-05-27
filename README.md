@@ -1,4 +1,6 @@
 ## maximus
+[![Build Status](https://travis-ci.org/britco/maximus.svg?branch=master)](https://travis-ci.org/britco/maximus)
+[![Dependency Status](https://david-dm.org/britco/maximus.svg)](https://david-dm.org/britco/maximus)
 
 Expands an element to the full size of the viewport. Useful if for example you have an ad unit deeply nested inside HTML that includes multiple `position: relative` divs.
 
