@@ -6,6 +6,10 @@ Max =
   hasResizeHandler: false
   
   track: (element) ->
+    # Maximize element now and any time the window gets resized
+    if element not instanceof Element
+      element = document.querySelector(element)
+    
     Max.trackedElements.push(element)
     
     # Add a global resize handler which will maximize elements when the window

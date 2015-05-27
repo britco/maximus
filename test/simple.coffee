@@ -45,3 +45,21 @@ describe 'simple', ->
         element.getBoundingClientRect().left.should.equal(0)
         element.offsetWidth.should.equal(document.documentElement.clientWidth)
         done()
+  
+  it 'should support selector syntax', (done) ->
+    fs.readFile "#{__dirname}/fixtures/simple_01.html", (err, result) ->
+      div = document.createElement('div')
+      div.innerHTML = result.toString()
+      document.querySelector('body').appendChild(div.firstChild)
+      
+      selector = '.simple-01-inner:last-of-type'
+      
+      maximus(selector)
+      
+      element = document.querySelector(selector)
+      
+      element.getBoundingClientRect().left.should.equal(0)
+      element.offsetWidth.should.equal(document.documentElement.clientWidth)
+    
+      done()
+    
