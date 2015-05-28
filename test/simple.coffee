@@ -7,12 +7,19 @@ chai.should()
 
 describe 'simple', ->
   beforeEach ->
+    # Reset event listeners and such
     maximus.reset()
     
+    # Remove test divs
+    Array.prototype.forEach.call document.querySelectorAll('[test-div]'), (elem) ->
+      elem.parentNode.removeChild(elem)
+  
   it 'should fit element to browser on load', (done) ->
     fs.readFile "#{__dirname}/fixtures/simple_01.html", (err, result) ->
       div = document.createElement('div')
       div.innerHTML = result.toString()
+      
+      div.firstChild.setAttribute('test-div','')
       document.querySelector('body').appendChild(div.firstChild)
       
       element = document.querySelector('body div:last-of-type')
@@ -27,6 +34,8 @@ describe 'simple', ->
     fs.readFile "#{__dirname}/fixtures/simple_01.html", (err, result) ->
       div = document.createElement('div')
       div.innerHTML = result.toString()
+      
+      div.firstChild.setAttribute('test-div','')
       document.querySelector('body').appendChild(div.firstChild)
       
       element = document.querySelector('body div:last-of-type')
@@ -50,9 +59,10 @@ describe 'simple', ->
     fs.readFile "#{__dirname}/fixtures/simple_01.html", (err, result) ->
       div = document.createElement('div')
       div.innerHTML = result.toString()
+      div.firstChild.setAttribute('test-div','')
       document.querySelector('body').appendChild(div.firstChild)
       
-      selector = '.simple-01-inner:last-of-type'
+      selector = '.simple-01-inner'
       
       maximus(selector)
       
@@ -60,7 +70,7 @@ describe 'simple', ->
       
       element.getBoundingClientRect().left.should.equal(0)
       element.offsetWidth.should.equal(document.documentElement.clientWidth)
-    
+          
       done()
   
   it 'should not have to do anything if element is already maximized', (done) ->
@@ -69,15 +79,13 @@ describe 'simple', ->
     fs.readFile "#{__dirname}/fixtures/simple_02.html", (err, result) ->
       div = document.createElement('div')
       div.innerHTML = result.toString()
+      div.firstChild.setAttribute('test-div','')
       document.querySelector('body').appendChild(div.firstChild)
       
       element = document.querySelector('.simple-02-inner:last-of-type')
       
       maximus(element)
       
-      parseInt(element.style.marginLeft).should.equal(0)
-      parseInt(element.style.marginRight).should.equal(0)
-      ''
       document.querySelector('body').removeAttribute('style')
       
       done()

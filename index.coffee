@@ -38,24 +38,18 @@ Max =
     if element.previousSibling?.hasAttribute?(placeholderAttr)
       placeholder = element.previousSibling
     else
-      placeholder = document.createElement('div')
+      placeholder = top.document.createElement('div')
       placeholder.setAttribute(placeholderAttr,'')
       element.parentNode.insertBefore(placeholder, element)
     
     # Adjust the left and right margin so box is stretched to the whole screen
     rect = verge.rectangle(placeholder)
     
-    if rect.left is 0
-      # If it's already flushed the left then we don't have to do anything!
-      element.style.marginLeft = 0
-    else
-      element.style.marginLeft = rect.left * -1 + 'px'
+    element.style.marginLeft = rect.left * -1 + 'px'
+
+    viewportWidth = top.document.documentElement.clientWidth
     
-    if verge.viewportW() is placeholder.offsetWidth - rect.left
-      # If it's already flushed the right,
-      element.style.marginRight = 0
-    else
-      element.style.marginRight = (verge.viewportW() - placeholder.offsetWidth - rect.left) * -1 + 'px'
+    element.style.marginRight = (viewportWidth - placeholder.offsetWidth - rect.left) * -1 + 'px'
     
   reset: (element) ->
     # Reset to original state
