@@ -1,6 +1,6 @@
 {
   "name": "maximus",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "",
   "main": "index.coffee",
   "scripts": {
@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/britco/maximus/issues"
   },
-  "homepage": "https://github.com/britco/maximus",  
+  "homepage": "https://github.com/britco/maximus",
   "browserify": {
     "transform": [
       "coffeeify"
@@ -30,6 +30,7 @@
     "karma-browserify": "^4.2.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.12",
+    "karma-cli": "0.0.4",
     "karma-mocha": "^0.1.10",
     "karma-osx-reporter": "^0.2.0",
     "karma-phantomjs-launcher": "^0.1.4",
@@ -40,7 +41,6 @@
     "coffeeify": ">=1.0.0"
   },
   "dependencies": {
-    "raf": "^3.0.0",
-    "verge": "^1.9.1"
+    "raf": "^3.0.0"
   }
 }
