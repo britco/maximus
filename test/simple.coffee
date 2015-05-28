@@ -11,7 +11,8 @@ describe 'simple', ->
     maximus.reset()
     
     # Remove test divs
-    Array.prototype.forEach.call document.querySelectorAll('[test-div]'), (elem) ->
+    testDivSEL = '[test-div],[data-maximize-placeholder]'
+    Array.prototype.forEach.call document.querySelectorAll(testDivSEL), (elem) ->
       elem.parentNode.removeChild(elem)
   
   it 'should fit element to browser on load', (done) ->
@@ -22,7 +23,7 @@ describe 'simple', ->
       div.firstChild.setAttribute('test-div','')
       document.querySelector('body').appendChild(div.firstChild)
       
-      element = document.querySelector('body div:last-of-type')
+      element = document.querySelector('body div.simple-01-inner:last-of-type')
       maximus(element)
       
       element.getBoundingClientRect().left.should.equal(0)
@@ -38,7 +39,7 @@ describe 'simple', ->
       div.firstChild.setAttribute('test-div','')
       document.querySelector('body').appendChild(div.firstChild)
       
-      element = document.querySelector('body div:last-of-type')
+      element = document.querySelector('body div.simple-01-inner:last-of-type')
       
       maximus(element)
       
@@ -62,7 +63,7 @@ describe 'simple', ->
       div.firstChild.setAttribute('test-div','')
       document.querySelector('body').appendChild(div.firstChild)
       
-      selector = '.simple-01-inner'
+      selector = '.simple-01-inner:last-of-type'
       
       maximus(selector)
       
@@ -83,8 +84,11 @@ describe 'simple', ->
       document.querySelector('body').appendChild(div.firstChild)
       
       element = document.querySelector('.simple-02-inner:last-of-type')
-      
+
       maximus(element)
+      
+      parseInt(element.style.marginLeft).should.equal(0)
+      parseInt(element.style.marginRight).should.equal(0)
       
       document.querySelector('body').removeAttribute('style')
       
