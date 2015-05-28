@@ -57,7 +57,7 @@ Max =
     # Cross-browser fix.. see verge lib
     rectElem = if placeholder and !placeholder.nodeType then placeholder[0] else placeholder
 
-    # Get offsets of placeholder div,
+    # Get offsets of placeholder div
     rect = rectElem.getBoundingClientRect()
 
     element.style.marginLeft = rect.left * -1 + 'px'
