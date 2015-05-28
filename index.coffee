@@ -40,7 +40,9 @@ Max =
     Max._tickingResize = true
 
   maximize: (element) ->
-    # Create placeholder div next to element
+    # Create placeholder div next to element. Necessary because you want to use
+    # a "pristine" div with no margin styles. You could use `element` once, but
+    # then after that it would have margin styles added.
     placeholderAttr = 'data-maximize-placeholder'
 
     if element.previousSibling?.hasAttribute?(placeholderAttr)
@@ -55,8 +57,7 @@ Max =
     # Cross-browser fix.. see verge lib
     rectElem = if placeholder and !placeholder.nodeType then placeholder[0] else placeholder
 
-    # Get offsets of placeholder div, which is used because you want a
-    # "pristine" div with no margin styles.
+    # Get offsets of placeholder div,
     rect = rectElem.getBoundingClientRect()
 
     element.style.marginLeft = rect.left * -1 + 'px'
