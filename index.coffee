@@ -1,4 +1,3 @@
-verge = require 'verge'
 raf = require 'raf'
 
 Max =
@@ -15,7 +14,7 @@ Max =
         if (_element = doc.querySelector(element))?.offsetWidth?
           element = _element
           break
-          
+
     # Return if it's not a valid DOM element
     return false if not element?.offsetWidth?
 
@@ -52,7 +51,13 @@ Max =
       element.parentNode.insertBefore(placeholder, element)
 
     # Adjust the left and right margin so box is stretched to the whole screen
-    rect = verge.rectangle(placeholder)
+
+    # Cross-browser fix.. see verge lib
+    rectElem = if placeholder and !placeholder.nodeType then placeholder[0] else placeholder
+
+    # Get offsets of placeholder div, which is used because you want a
+    # "pristine" div with no margin styles.
+    rect = rectElem.getBoundingClientRect()
 
     element.style.marginLeft = rect.left * -1 + 'px'
 

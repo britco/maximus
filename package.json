@@ -41,7 +41,6 @@
     "coffeeify": ">=1.0.0"
   },
   "dependencies": {
-    "raf": "^3.0.0",
-    "verge": "^1.9.1"
+    "raf": "^3.0.0"
   }
 }
