@@ -8,7 +8,7 @@ Max =
   track: (element) ->
     # Maximize element now and any time the window gets resized
     if not element?.offsetWidth?
-      element = document.querySelector(element)
+      element = top.document.querySelector(element)
     
     Max.trackedElements.push(element)
     
