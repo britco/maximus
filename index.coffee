@@ -67,6 +67,8 @@ Max =
 
     top.window.removeEventListener 'resize', Max.onResize if Max.hasResizeHandler
 
+# Copy over functions to Max.track as well, that way you can do
+# something like require('maximus').reset()
 [Max.track.reset, Max.track.onResize] = [Max.reset, Max.onResize]
 
 module.exports = Max.track
