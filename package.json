@@ -30,6 +30,7 @@
     "karma-browserify": "^4.2.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.12",
+    "karma-cli": "0.0.4",
     "karma-mocha": "^0.1.10",
     "karma-osx-reporter": "^0.2.0",
     "karma-phantomjs-launcher": "^0.1.4",
