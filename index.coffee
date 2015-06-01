@@ -59,6 +59,11 @@ Max =
 
     # Get offsets of placeholder div
     rect = rectElem.getBoundingClientRect()
+  
+    # If you want an element to maximize, that would imply that you don't want
+    # the width to be fixed, so it should just be set to width: auto. Also
+    # width: 100% has some problems, so we want to override that..
+    element.style.width = 'auto'
 
     element.style.marginLeft = rect.left * -1 + 'px'
 

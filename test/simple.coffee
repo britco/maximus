@@ -93,4 +93,22 @@ describe 'simple', ->
       document.querySelector('body').removeAttribute('style')
       
       done()
+  
+  it 'should override width property of element', (done) ->
+    # See https://github.com/britco/maximus/blob/master/index.coffee#L66
     
+    fs.readFile "#{__dirname}/fixtures/set_width.html", (err, result) ->
+      div = document.createElement('div')
+      div.innerHTML = result.toString()
+      div.firstChild.setAttribute('test-div','')
+      document.querySelector('body').appendChild(div.firstChild)
+      
+      element = document.querySelector('.set-width-inner:last-of-type')
+      
+      element.style.width.should.equal('100px')
+      
+      maximus(element)
+      
+      element.style.width.should.equal('auto')
+      
+      done()

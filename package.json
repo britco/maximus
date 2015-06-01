@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.coffee",
   "scripts": {
-    "test": "./node_modules/.bin/karma start"
+    "test": "./node_modules/.bin/karma start",
+    "debug-test": "KARMA_AUTO_WATCH=true KARMA_BROWSER=Chrome KARMA_SINGLE_RUN=false ./node_modules/.bin/karma start"
   },
   "repository": {
     "type": "git",
