@@ -59,14 +59,13 @@ module.exports = (config) ->
 
 
     # enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false
-
+    autoWatch: if autoWatch = process.env.KARMA_AUTO_WATCH then JSON.parse(autoWatch) else false
 
     # start these browsers
     # available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS']
+    browsers: [if browsers = process.env.KARMA_BROWSER then browsers else 'PhantomJS']
 
 
     # Continuous Integration mode
     # if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: if singleRun = process.env.KARMA_SINGLE_RUN then JSON.parse(singleRun) else true
