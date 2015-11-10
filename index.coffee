@@ -8,7 +8,7 @@ Max =
     # If it's not a DOM element.. it's probably a selector, so search the
     # current doc as well as the parent doc for that element.
     if not element?.offsetWidth?
-      docs = [top.document,document]
+      docs = [parent.document,top.document,document]
 
       for doc in docs
         if (_element = doc.querySelector(element))?.offsetWidth?
