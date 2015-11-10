@@ -48,12 +48,12 @@ Max =
     if element.previousSibling?.hasAttribute?(placeholderAttr)
       placeholder = element.previousSibling
     else
-      placeholder = top.document.createElement('div')
+      placeholder = element.ownerDocument.createElement('div')
       placeholder.setAttribute(placeholderAttr,'')
       element.parentNode.insertBefore(placeholder, element)
 
     # Adjust the left and right margin so box is stretched to the whole screen
-
+    
     # Cross-browser fix.. see verge lib
     rectElem = if placeholder and !placeholder.nodeType then placeholder[0] else placeholder
 
@@ -67,7 +67,7 @@ Max =
 
     element.style.marginLeft = rect.left * -1 + 'px'
 
-    viewportWidth = top.document.documentElement.clientWidth
+    viewportWidth = element.ownerDocument.documentElement.clientWidth
 
     element.style.marginRight = (viewportWidth - placeholder.offsetWidth - rect.left) * -1 + 'px'
 
